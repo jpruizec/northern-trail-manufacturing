@@ -89,7 +89,7 @@ app.use('/', express.static(__dirname + '/www'));
 app.get('/mixes', getMixes);
 app.get('/mixes/:mixId', getMixDetails);
 app.post('/approvals/:mixId', approveMix);
-app.get('/mixes/:mixId/status', getMixStatus);
+app.get('/mixes/:mixName/status', getMixStatus);
 
 let bayeux = new faye.NodeAdapter({mount: '/faye', timeout: 45});
 bayeux.attach(server);
