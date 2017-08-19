@@ -16,6 +16,7 @@ let getMixes = (req, res) => {
             let mixes = resp.records;
             let prettyMixes = [];
             mixes.forEach(mix => {
+                console.log(mix);
                 prettyMixes.push({
                     mixId: mix.get("Id"),
                     mixName: mix.get("Name"),
@@ -56,6 +57,16 @@ let getMixDetails = (req, res) => {
 
 };
 
+let getMixStatus = (req, res) => {
+    let mixName = req.params.mixName;
+    // generate random date bewteen 30 and 80 days from now
+    res.json({
+        mix: mixName,
+        status: "on track",
+        estimatedDelivery: new Date(new Date().getTime() + 30 * 86400000 + Math.random() * 50 * 86400000) // 86400000 = 24 * 60 * 60 * 1000
+    });
+};
+
 let approveMix = (req, res) => {
     let mixId = req.params.mixId;
     let event = nforce.createSObject('Mix_Approved__e');
@@ -78,7 +89,7 @@ app.use('/', express.static(__dirname + '/www'));
 app.get('/mixes', getMixes);
 app.get('/mixes/:mixId', getMixDetails);
 app.post('/approvals/:mixId', approveMix);
-
+app.get('/mixes/:mixId/status', getMixStatus);
 
 let bayeux = new faye.NodeAdapter({mount: '/faye', timeout: 45});
 bayeux.attach(server);
