@@ -1,0 +1,93 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "How to fetch manufacturing data for Swagger",
+        "version": "1.0.0",
+        "title": "TrailMix Manufacturing",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "mail@winkelmeyer.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "northern-trail-manufacturing.herokuapp.com",
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/mixes/all": {
+            "get": {
+                "summary": "Returns a list of all available TrailMix mix ids.",
+                "description": "",
+                "operationId": "getAllMixes",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/trailMixes"
+                        }
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/mixes/{mixId}/status": {
+            "get": {
+                "summary": "Gets the status for the provided TrailMix.",
+                "description": "",
+                "operationId": "getMixById",
+                "parameters": [
+                    {
+                        "name": "mixId",
+                        "in": "path",
+                        "description": "The id of the mix",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/trailMix"
+                        }
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "trailMixes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/trailMix"
+            }
+        },
+        "trailMix": {
+            "type": "object",
+            "properties": {
+                "mix": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "estimatedDelivery": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

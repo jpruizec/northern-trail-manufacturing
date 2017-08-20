@@ -86,6 +86,7 @@ let PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use('/', express.static(__dirname + '/www'));
+app.use('/swagger', express.static(__dirname + '/swagger'));
 app.get('/mixes', getMixes);
 app.get('/mixes/:mixId', getMixDetails);
 app.post('/approvals/:mixId', approveMix);
