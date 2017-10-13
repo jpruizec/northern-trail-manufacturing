@@ -2,7 +2,7 @@
   "name": "northern-trail-manufacturing",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "author": "Christophe Coenraets <ccoenraets@gmail.com> (http://coenraets.org/)",
   "license": "ISC",
   "dependencies": {
