@@ -18,5 +18,10 @@
         "description": "Salesforce password for your integration user",
         "value":""
     }
+    ,
+    "SF_ENV_TYPE": {
+        "description": "Salesforce environment type: production or sandbox",
+        "value":"production"
+    }
   }
 }

@@ -105,11 +105,12 @@ let SF_CLIENT_ID = process.env.SF_CLIENT_ID;
 let SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET;
 let SF_USER_NAME = process.env.SF_USER_NAME;
 let SF_USER_PASSWORD = process.env.SF_USER_PASSWORD;
+let SF_ENV_TYPE = process.env.SF_ENV_TYPE;
 
 let org = nforce.createConnection({
     clientId: SF_CLIENT_ID,
     clientSecret: SF_CLIENT_SECRET,
-    environment: "sandbox",
+    environment: SF_ENV_TYPE,
     redirectUri: 'http://localhost:3000/oauth/_callback',
     mode: 'single',
     autoRefresh: true
