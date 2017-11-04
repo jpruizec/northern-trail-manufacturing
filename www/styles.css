@@ -39,11 +39,13 @@ body{
 .navbar-nav{
 	height:115px;
 }
-.navbar-brand{
+.navbar .navbar-brand{
 	height:115px;
 	padding-top:40.5px;
 	padding-bottom:40.5px;
 	padding-right:35px;
+	color:#c7c7c7;
+	font-size: xx-large;
 }
 
  @media (min-width: 1280px){
