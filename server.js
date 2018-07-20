@@ -16,7 +16,6 @@ let getMixes = (req, res) => {
             let mixes = resp.records;
             let prettyMixes = [];
             mixes.forEach(mix => {
-                console.log(mix);
                 prettyMixes.push({
                     mixId: mix.get("Id"),
                     mixName: mix.get("Name"),
@@ -101,16 +100,16 @@ bayeux.on('disconnect', function(clientId) {
 server.listen(PORT, () => console.log(`Express server listening on ${ PORT }`));
 
 // Connect to Salesforce
-let SF_CLIENT_ID = process.env.SF_CLIENT_ID;
-let SF_CLIENT_SECRET = process.env.SF_CLIENT_SECRET;
+let SF_CONSUMER_KEY = process.env.SF_CONSUMER_KEY;
+let SF_CONSUMER_SECRET = process.env.SF_CONSUMER_SECRET;
 let SF_USER_NAME = process.env.SF_USER_NAME;
 let SF_USER_PASSWORD = process.env.SF_USER_PASSWORD;
-let SF_ENV_TYPE = process.env.SF_ENV_TYPE;
+let SF_ENVIRONMENT = process.env.SF_ENVIRONMENT;
 
 let org = nforce.createConnection({
-    clientId: SF_CLIENT_ID,
-    clientSecret: SF_CLIENT_SECRET,
-    environment: SF_ENV_TYPE,
+    clientId: SF_CONSUMER_KEY,
+    clientSecret: SF_CONSUMER_SECRET,
+    environment: SF_ENVIRONMENT,
     redirectUri: 'http://localhost:3000/oauth/_callback',
     mode: 'single',
     autoRefresh: true
