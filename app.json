@@ -20,7 +20,7 @@
     }
     ,
     "SF_ENVIRONMENT": {
-        "description": "Salesforce environment type: production (for regular developer edition orgs) or sandbox (for scratch orgs)",
+        "description": "Salesforce environment. Enter production (for regular developer edition orgs) or sandbox (for scratch orgs)",
         "value":"production"
     }
   }
